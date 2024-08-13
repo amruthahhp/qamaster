@@ -1,0 +1,33 @@
+package com.qamaster;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import junit.framework.Assert;
+
+public class Locators2 {
+public static void main(String[] args) throws InterruptedException{
+		
+		//Initislising driver
+		
+		WebDriver driver = new ChromeDriver();		
+		driver.get("https://rahulshettyacademy.com/locatorspractice/");
+		//provode implicit wait
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		String name = "Amrutha";
+		WebElement username = driver.findElement(By.id("inputUsername"));
+		WebElement password = driver.findElement(By.name("inputPassword"));
+		WebElement signIn = driver.findElement(By.className("signInBtn"));
+		username.sendKeys(name);
+		password.sendKeys("rahulshettyacademy");
+		driver.findElement(By.cssSelector("#chkboxTwo")).click();
+		driver.findElement(By.cssSelector("button[type='submit']")).click();
+		Assert.assertEquals(driver.findElement(By.xpath("//p")).getText(), "You are successfully logged in.");
+		Assert.assertEquals(driver.findElement(By.xpath("//h2")).getText(),"Hello "+name);
+}
+
+}
