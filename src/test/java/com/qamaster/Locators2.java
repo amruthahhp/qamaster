@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import junit.framework.Assert;
 
@@ -14,7 +15,8 @@ public static void main(String[] args) throws InterruptedException{
 		
 		//Initislising driver
 		
-		WebDriver driver = new ChromeDriver();		
+		WebDriver driver = new ChromeDriver();	
+//		WebDriver driver = new FirefoxDriver();	
 		driver.get("https://rahulshettyacademy.com/locatorspractice/");
 		//provode implicit wait
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
