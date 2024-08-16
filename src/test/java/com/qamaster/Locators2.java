@@ -26,8 +26,13 @@ public static void main(String[] args) throws InterruptedException{
 		password.sendKeys("rahulshettyacademy");
 		driver.findElement(By.cssSelector("#chkboxTwo")).click();
 		driver.findElement(By.cssSelector("button[type='submit']")).click();
-		Assert.assertEquals(driver.findElement(By.xpath("//p")).getText(), "You are successfully logged in.");
-		Assert.assertEquals(driver.findElement(By.xpath("//h2")).getText(),"Hello "+name);
+		Thread.sleep(2000);
+		String message = driver.findElement(By.xpath("//p")).getText();
+		Assert.assertEquals("You are successfully logged in.", message);
+		Thread.sleep(2000);
+		String actualName = driver.findElement(By.xpath("//h2")).getText();
+		Assert.assertEquals("Hello "+name+",", actualName);
+		driver.findElement(By.xpath("//button[text()='Log Out']")).click();
 }
 
 }
